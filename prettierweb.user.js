@@ -1,10 +1,12 @@
 // ==UserScript==
 // @name         Prettier Web
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0-20250101
+// @version      1.0.5-20250522
 // @description  自用的用于调整和美化一些网站展示效果的油猴脚本。
 // @author       GoolLong
-// @match        *://kimi.moonshot.cn/*
+// @match        *://kimi.com/*
+// @match        *://chat.deepseek.com/*
+// @match        *://github.com/*
 // @match        *://share.dmhy.org/topics/view/*
 // @grant        GM_addStyle
 // @grant        unsafeWindow
@@ -16,10 +18,32 @@
   const url = unsafeWindow.location.href
 
   // 调整 Kimi 聊天的消息框宽度
-  if (url === 'https://kimi.moonshot.cn/' || url.includes('kimi.moonshot.cn/chat/')) {
+  if (url === 'https://www.kimi.com/' || url.includes('www.kimi.com/chat/')) {
     GM_addStyle(`
-      .css-jdjpte {
-        max-width: 90% !important;
+      .chat-content-list {
+        max-width: 92% !important;
+      }
+    `)
+
+  // 调整 DeepSeek 聊天的消息框宽度
+  } else if (url === 'https://chat.deepseek.com/' || url.includes('chat.deepseek.com/a/chat/')) {
+    GM_addStyle(`
+      :root {
+        --message-list-max-width: 100% !important;
+      }
+    `)
+
+  // 调整 github.com 仓库页面"代码"标签页的最大宽度
+  } else if (url.includes('github.com/')) {
+    GM_addStyle(`
+      .container-xl {
+        max-width: 100%;
+      }
+      .react-repos-overview-margin {
+        margin-right: 0;
+      }
+      .markdown-body.container-lg {
+        max-width: 100%;
       }
     `)
 
