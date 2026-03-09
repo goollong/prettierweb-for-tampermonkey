@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Prettier Web
 // @namespace    http://tampermonkey.net/
-// @version      1.0.6-20260121
+// @version      1.0.7-20260310
 // @description  自用的用于调整和美化一些网站展示效果的油猴脚本。
 // @author       GoolLong
 // @match        *://www.kimi.com/*
@@ -39,13 +39,7 @@
   // 调整 github.com 仓库页面"代码"标签页的最大宽度
   } else if (url.includes('github.com/')) {
     GM_addStyle(`
-      .container-xl {
-        max-width: 100%;
-      }
-      .react-repos-overview-margin {
-        margin-right: 0;
-      }
-      .markdown-body.container-lg {
+      .container-xl, .prc-PageLayout-Content-xWL-A, .container-lg {
         max-width: 100%;
       }
     `)
