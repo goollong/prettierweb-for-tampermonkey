@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Prettier Web
 // @namespace    http://tampermonkey.net/
-// @version      1.0.5-20250522
+// @version      1.0.6-20260121
 // @description  自用的用于调整和美化一些网站展示效果的油猴脚本。
 // @author       GoolLong
-// @match        *://kimi.com/*
+// @match        *://www.kimi.com/*
 // @match        *://chat.deepseek.com/*
 // @match        *://github.com/*
 // @match        *://share.dmhy.org/topics/view/*
@@ -22,6 +22,9 @@
     GM_addStyle(`
       .chat-content-list {
         max-width: 92% !important;
+      }
+      .chat-editor {
+        max-width: 80% !important;
       }
     `)
 
